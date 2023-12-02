@@ -1,0 +1,65 @@
+.xml
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+	<Spinner
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/spinner"/>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+.java
+
+
+
+
+
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    Spinner sp;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sp=findViewById(R.id.spinner);
+        ArrayList<String>  categories=new ArrayList<String>();
+        for(int i=0;i<5;i++)
+        {
+            categories.add("Item"+i);
+        }
+        ArrayAdapter<String> arrayadapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,categories);
+        arrayadapter.setDropDownViewResource((android.R.layout.simple_list_item_1));
+        sp.setAdapter(arrayadapter);
+
+    }
+}
