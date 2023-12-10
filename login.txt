@@ -1,0 +1,128 @@
+.xml
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="16dp">
+
+        <!-- Login Heading Row -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </TableRow>
+
+        <!-- Name TextView and EditText Row -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"/>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/e1"/>
+        </TableRow>
+
+        <!-- Password TextView and EditText Row -->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password:"/>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/e2"
+                android:inputType="textPassword"/>
+        </TableRow>
+
+        <!-- Submit Button Row -->
+        <TableRow>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:onClick="display"
+                android:id="@+id/buttonSubmit"/>
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="150dp"
+        android:id="@+id/t1"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
+
+
+
+
+
+
+.java
+
+
+
+
+
+
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    EditText ed1;
+    EditText ed2;
+    TextView text1;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ed1=findViewById(R.id.e1);
+        ed2=findViewById(R.id.e2);
+        text1=findViewById(R.id.t1);
+    }
+    public void display(View view) {
+        String username = ed1.getText().toString();
+        String password = ed2.getText().toString();
+        if (username.equals("admin") && password.equals("password")) {
+
+            text1.setText("login sucessful");
+
+        }
+        else {
+            text1.setText("invalid credentials");
+
+        }
+    }
+}
