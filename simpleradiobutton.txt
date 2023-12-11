@@ -1,0 +1,114 @@
+.xml
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT GENDER"
+        android:layout_marginLeft="50dp"
+        android:textSize="40dp"
+        android:layout_marginTop="100dp"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/R">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonclick"
+            android:checked="true"
+            android:text="MALE"
+            android:textSize="30dp"
+            android:id="@+id/r1"
+            tools:ignore="InvalidId">
+
+        </RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonclick"
+            android:checked="false"
+            android:text="FEMALE"
+            android:textSize="30dp"
+            android:id="@+id/r2"
+            tools:ignore="InvalidId">
+
+        </RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonclick"
+            tools:ignore="InvalidId"
+            android:checked="false"
+            android:text="OTHERS"
+            android:textSize="30dp"
+            android:id="@+id/r3">
+        </RadioButton>
+        </RadioGroup>
+
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="500dp">
+
+    </TextView>
+</RelativeLayout>
+
+
+
+
+
+.java
+
+
+
+
+
+
+
+
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    TextView textt;
+    RadioGroup radiogroup;
+    RadioButton radiobutton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        radiogroup=findViewById(R.id.R);
+        textt=findViewById(R.id.t1);
+    }
+    public void buttonclick(View view)
+    {
+        int radioid=radiogroup.getCheckedRadioButtonId();
+        radiobutton=findViewById(radioid);
+//        Toast.makeText(this, "SELECTED GENDER IS:"+radiobutton.getText(), Toast.LENGTH_SHORT).show();
+        textt.setText("SELECTED GENDER IS:"+radiobutton.getText());
+    }
+}
