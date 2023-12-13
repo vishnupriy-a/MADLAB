@@ -1,0 +1,97 @@
+.xml
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="IMAGE1"
+        android:textSize="20dp"
+        android:onClick="display"
+        android:id="@+id/btn1"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="IMAGE2"
+        android:onClick="display"
+        android:textSize="20dp"
+        android:id="@+id/btn2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"/>
+    </TableRow>
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="303dp"
+        android:layout_height="371dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="200dp" />
+
+
+</RelativeLayout>
+
+
+
+
+
+
+.java
+
+
+
+
+
+
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+    Button b1,b2;
+    ImageView img1;
+
+
+    @SuppressLint({"ResourceType", "MissingInflatedId"})
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        b1=findViewById(R.id.btn1);
+        b2=findViewById(R.id.btn2);
+        img1=findViewById(R.id.img1);
+
+
+    }
+    public void display(View v)
+    {
+        int id=v.getId();
+        if ((id== b1.getId()))
+        {
+            img1.setImageResource(R.drawable.image2);
+        }
+        else
+        {
+            img1.setImageResource(R.drawable.image3);
+        }
+    }
+}
+
